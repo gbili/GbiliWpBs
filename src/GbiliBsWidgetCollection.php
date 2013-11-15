@@ -53,7 +53,7 @@ class GbiliBsWidgetCollection
     public function render()
     {
         if ($this->rendered) {
-            throw new Exception('You cannot render more than once, create a different collection. If you really want to re-render the same collection twice, use buffers: ob_start(), ob_get_clean() etc.';
+            throw new Exception('You cannot render more than once, create a different collection. If you really want to re-render the same collection twice, use buffers: ob_start(), ob_get_clean() etc.');
         }
         $widget_class = get_class(current($this->widgets));
         $widget_class::open_row($this);
