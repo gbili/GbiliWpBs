@@ -15,7 +15,7 @@ Copy the containing directory to your wordpress plugins directory
 ## Use what is already packaged
 
 To use the Widgets that come built in, simply use the global function:
-´gbili_bs_echo_widgets(array(
+`gbili_bs_echo_widgets(array(
                            array(
                                'thumb_src' => 'http://gbili.com/wp-content/uploads/some-picture.jpg'
                                'thumb_alt' => 'some picture'),
@@ -27,24 +27,24 @@ To use the Widgets that come built in, simply use the global function:
                                'thumb_alt' => 'really you can add as many as 12 images, otherwise it will look bad'),
                        ),
                        'GbiliBsThumb'
-);´
+);`
 
-If you don't specify the widget class name, GbiliBsFactory will try to figure one that matches your widget keys (e.g. ´thumb_src´ would trigger the ´GbiliBsSliderCarouselThumbSelectorSingle´ or ´GbiliBsCarouselSingle´).
+If you don't specify the widget class name, GbiliBsFactory will try to figure one that matches your widget keys (e.g. `thumb_src` would trigger the `GbiliBsSliderCarouselThumbSelectorSingle` or `GbiliBsCarouselSingle`).
 
 ## Take advantage of Wordpress custom fields
 
-This plugin has been designed to work with Wordpress Custom fields. The point is to create some custom fields, either in custom post types or in standard posts, and then get those fields with: ´get_post_meta($post_id)´ 
+This plugin has been designed to work with Wordpress Custom fields. The point is to create some custom fields, either in custom post types or in standard posts, and then get those fields with: `get_post_meta($post_id)` 
 
 You can then directly inject the meta into a widget to display it nicely:
-´gbili_bs_echo_widgets(gbili_get_post_meta(get_the_ID(), array('thumb_src', 'thumb_alt')), 'GbiliBsThumb');´
+`gbili_bs_echo_widgets(gbili_get_post_meta(get_the_ID(), array('thumb_src', 'thumb_alt')), 'GbiliBsThumb');`
 
-To see ´gbili_get_post_meta()´ internals visti [gbili-get-post-meta].
+To see `gbili_get_post_meta()` internals visti [gbili-get-post-meta].
 
 [gbili-get-post-meta]: http://gbili.com/dev/wp-meta-functions "this post"
 
 ## Create custom widgets
 
-To create custom widgets take a look at the ones that come packaged in: ´GbiliWpBs/Widgets´ and create your own by extending the base class: ´GbiliBsWidget´ 
+To create custom widgets take a look at the ones that come packaged in: `GbiliWpBs/Widgets` and create your own by extending the base class: `GbiliBsWidget` 
 
 # Support 
 
