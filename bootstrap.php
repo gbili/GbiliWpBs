@@ -1,12 +1,12 @@
 <?php
 /**
- * @package Gbili_Bs_Widgets
+ * @package GbiliWpBs
  * @version 1.6
  */
 /*
-Plugin Name: Gbili Bs Widgets 
-Plugin URI: http://wordpress.org/extend/plugins/gbili-bs/
-Description: Use packaged widgets and display your posts in a cooliful manner.
+Plugin Name: Gbili Wordpress Bootstrap
+Plugin URI: http://wordpress.org/extend/plugins/gbili-wp-bs/
+Description: Use packaged widgets and display your posts like a pimp.
 Author: Guillermo Devi
 Version: 0.1
 Author URI: http://c.onfi.gs/
