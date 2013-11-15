@@ -39,9 +39,9 @@ This plugin has been designed to work with Wordpress Custom fields. The point is
 You can then directly inject the meta into a widget to display it nicely:
 `gbili_bs_echo_widgets(gbili_get_post_meta(get_the_ID(), array('thumb_src', 'thumb_alt')), 'GbiliBsThumb');`
 
-To see `gbili_get_post_meta()` internals visti [gbili-get-post-meta].
+To see `gbili_get_post_meta()` internals visit [this post].
 
-[gbili-get-post-meta]: http://gbili.com/dev/wp-meta-functions "this post"
+[this post]: http://gbili.com/dev/wp-meta-functions "gbili-get-post-meta"
 
 ## Create custom widgets
 
@@ -49,6 +49,6 @@ To create custom widgets take a look at the ones that come packaged in: `GbiliWp
 
 # Support 
 
-Visit [gbili-com-gbiliwpbs-support]
+Visit [the support page]
 
-[gbili-com-gbiliwpbs-support]: http://gbili.com/dev/gbiliwpbs-support "the support page"
+[the support page]: http://gbili.com/dev/gbiliwpbs-support "gbili-com-gbiliwpbs-support"
