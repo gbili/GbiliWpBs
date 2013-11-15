@@ -15,19 +15,20 @@ Copy the containing directory to your wordpress plugins directory
 ## Use what is already packaged
 
 To use the Widgets that come built in, simply use the global function:
-`gbili_bs_echo_widgets(array(
-                           array(
-                               'thumb_src' => 'http://gbili.com/wp-content/uploads/some-picture.jpg'
-                               'thumb_alt' => 'some picture'),
-                           array(
-                               'thumb_src' => 'http://gbili.com/wp-content/uploads/some-other-picture.jpg'
-                               'thumb_alt' => 'some other picture'),
-                           array(
-                               'thumb_src' => 'http://gbili.com/wp-content/uploads/as-many-as-you-want.jpg'
-                               'thumb_alt' => 'really you can add as many as 12 images, otherwise it will look bad'),
-                       ),
-                       'GbiliBsThumb'
-);`
+    gbili_bs_echo_widgets(
+        array(
+            array(
+                'thumb_src' => 'http://gbili.com/wp-content/uploads/some-picture.jpg'
+                'thumb_alt' => 'some picture'),
+            array(
+                'thumb_src' => 'http://gbili.com/wp-content/uploads/some-other-picture.jpg'
+                'thumb_alt' => 'some other picture'),
+            array(
+                'thumb_src' => 'http://gbili.com/wp-content/uploads/as-many-as-you-want.jpg'
+                'thumb_alt' => 'really you can add as many as 12 images, otherwise it will look bad'),
+        ),
+        'GbiliBsThumb'
+    );`
 
 If you don't specify the widget class name, GbiliBsFactory will try to figure one that matches your widget keys (e.g. `thumb_src` would trigger the `GbiliBsSliderCarouselThumbSelectorSingle` or `GbiliBsCarouselSingle`).
 
