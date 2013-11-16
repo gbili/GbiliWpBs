@@ -1,5 +1,4 @@
 <?php
-namespace Gbili\WpBsWidget;
 /**
  * @package GbiliWpBs
  * @version 1.6

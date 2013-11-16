@@ -5,6 +5,12 @@ require_once 'Widget.php';
 
 class Thumb extends Widget
 {
+
+    static public function needed_keys()
+    {
+        return array('thumb_src', 'thumb_alt');
+    }
+
     static public function open_row($collection)
     {
         self::set_row_open();
@@ -25,10 +31,5 @@ class Thumb extends Widget
         </div>
       </div>
 <?php 
-    }
-
-    static public function needed_keys()
-    {
-        return array('thumb_src', 'thumb_alt');
     }
 }
