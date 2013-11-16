@@ -1,6 +1,8 @@
 <?php
 namespace Gbili;
 
+require_once 'ClassNameHelper.php';
+
 class ClassFile
 {
     protected $path;
@@ -52,7 +54,10 @@ class ClassFile
     public function get_class_name()
     {
         if (null === $this->class_name) {
-            $this->class_name = substr($this->get_base_name(), 0, -4);
+            $class_name = substr($this->get_base_name(), 0, -4);
+            if(!$this->class_name = \Gbili\ClassNameHelper::namespace_until_class_exists($class_name, $this->get_path())) {
+                throw new \Exception('It looks like the class file is not conventional. Cannot get the class name from the file name: ' . $class_name . '. Path is: ' . $this->get_path());
+            }
         }
         return $this->class_name;
     }

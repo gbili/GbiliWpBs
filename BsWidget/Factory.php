@@ -1,6 +1,8 @@
 <?php
 namespace Gbili\BsWidget;
 
+require_once __DIR__ . '/../ClassNameHelper.php';
+
 class Factory
 {
     static protected $widget_classes_by_needed_keys_count = array();
@@ -29,13 +31,15 @@ class Factory
 
     static public function register_widget_class($class)
     {
+        $class = self::namespace_class($class);
         if (!self::can_register_widget_class($class)) {
-            throw new Exception('Parameter class cannot be registered: ' . print_r($class, true));
+            throw new \Exception('Parameter class cannot be registered: ' . print_r($class, true));
         }
         self::$widget_classes_by_needed_keys_count[self::init_key_count($class)][] = $class;
         self::$registered_widget_classes[] = $class;
         self::add_registered_class_needed_keys($class);
     }
+
 
     static public function get_registered_classes_needed_keys()
     {
@@ -58,12 +62,13 @@ class Factory
 
     static public function check_provided_data(array $data, $class)
     {
+        $class = self::namespace_class($class);
         if (!self::is_class_usable($class)) {
-            throw new Exception('The specified class cannot be used as a widget : ' . $class);
+            throw new \Exception('The specified class cannot be used as a widget : ' . $class);
         }
 
         if (!$class::is_enough_data_to_construct($data)) {
-            throw new Exception(self::cannot_construct_error_message($data));
+            throw new \Exception(self::cannot_construct_error_message($data));
         }
         return $class;
     }
@@ -99,5 +104,10 @@ class Factory
                 }
             }
         }
+    }
+
+    static public function namespace_class($class)
+    {
+        return \Gbili\ClassNameHelper::namespace_class_if_not_already(__NAMESPACE__ . '\\Widget\\', $class);
     }
 }

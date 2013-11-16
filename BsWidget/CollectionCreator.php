@@ -25,6 +25,9 @@ class CollectionCreator
 
     public function get_widgets_data()
     {
+        if (empty($this->widgets_data)) {
+            throw new \Exception('The widgets data is empty. Either not set or you passed an empty array.');
+        }
         return $this->widgets_data;
     }
 }

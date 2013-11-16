@@ -4,7 +4,7 @@ namespace Gbili\BsWidget;
 require_once __DIR__ . '/../ClassDir.php';
 require_once 'Factory.php';
 
-defined || define('GBILI_BSWIDGET_WIDGET_DIR', __DIR__ . '/Widget');
+define('GBILI_BSWIDGET_WIDGET_DIR', __DIR__ . '/Widget');
 
 class Application
 {
