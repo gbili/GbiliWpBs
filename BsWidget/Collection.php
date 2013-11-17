@@ -77,7 +77,7 @@ class Collection
         $rest = $empty_space_span % 2;
         $one_empty_space_span = ($empty_space_span - $rest) / 2;
         if ($one_empty_space_span) {
-            ?><div class="span<?php echo $one_empty_space_span ?>></div><?php
+            ?><div class="span<?php echo $one_empty_space_span ?>"></div><?php
         }
         ++$this->filled_empty_spaces_count;
     }
