@@ -10,9 +10,9 @@ class ThumbButton extends Thumb
         return array('thumb_src', 'thumb_alt', 'button_text', 'button_link');
     }
 
-    public function render()
-    { ?>
-      <div class="span<?php echo $this->get_span_size();?>">
+    public function inner_render()
+    { 
+   ?><div class="span<?php echo $this->get_span_size();?>">
         <div class="thumbnail">
           <img src="<?php echo $this->get_thumb_src();?>" alt="<?php echo $this->get_thumb_alt();?>">
           <div class="caption">
@@ -21,7 +21,6 @@ class ThumbButton extends Thumb
             </p>
           </div>
         </div>
-      </div>
-<?php 
+      </div><?php 
     }
 }

@@ -10,9 +10,9 @@ class ThumbTitleDescription extends Thumb
         return array('thumb_src', 'thumb_alt', 'thumb_title', 'thumb_description');
     }
 
-    public function render()
-    { ?>
-      <div class="span<?php echo $this->get_span_size();?>">
+    public function inner_render()
+    { 
+    ?><div class="span<?php echo $this->get_span_size();?>">
         <div class="thumbnail">
           <img src="<?php echo $this->get_thumb_src();?>" alt="<?php echo $this->get_thumb_alt();?>">
           <div class="caption">
@@ -20,7 +20,6 @@ class ThumbTitleDescription extends Thumb
             <?php echo $this->get_thumb_description();?>
           </div>
         </div>
-      </div>
-<?php 
+      </div><?php 
     }
 }

@@ -23,13 +23,12 @@ class Thumb extends Widget
         ?></div><?php       
     }
 
-    public function render()
-    { ?>
-      <div class="span<?php echo $this->get_span_size();?>">
+    public function inner_render()
+    { 
+    ?><div class="span<?php echo $this->get_span_size();?>">
         <div class="thumbnail">
           <img src="<?php echo $this->get_thumb_src();?>" alt="<?php echo $this->get_thumb_alt();?>">
         </div>
-      </div>
-<?php 
+      </div><?php 
     }
 }

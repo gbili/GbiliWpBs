@@ -109,6 +109,13 @@ class Widget
         return $this;
     }
 
+    /**
+     * Override this at will
+     */
+    static public function fill_empty_space($collection)
+    {
+        $collection->fill_empty_space();
+    }
 
     static public function set_row_open()
     {
@@ -138,10 +145,25 @@ class Widget
         ?></div><?php       
     }
 
-    public function render()
+    public function inner_render()
     { 
       ?><h1>Snip snap snappy, snappy, snappy, snappy!</h1>
-        <p>This class is meant to be extended do not use as is</p><?php 
+        <p>This class is meant to be extended do not use as is, override inner_render() method to output your html</p><?php 
+    }
+
+    public function render()
+    {
+        $this->before_inner_render();
+        $this->inner_render();
+        $this->after_inner_render();
+    }
+
+    public function before_inner_render()
+    {
+    }
+
+    public function after_inner_render()
+    {
     }
 
     public function __call($get_name, $arguments)
@@ -152,7 +174,6 @@ class Widget
         }
         throw new Exception('Requested attribute does not exist: ' . print_r($name, true) . '. Probably needed_keys does not include the key you are using.');
     }
-
 
     static public function is_enough_data_to_construct(array $data)
     {

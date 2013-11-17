@@ -10,9 +10,9 @@ class ThumbLinkTitle extends Thumb
         return array('thumb_src', 'thumb_alt', 'thumb_link', 'thumb_title');
     }
 
-    public function render()
-    { ?>
-      <div class="span<?php echo $this->get_span_size();?>">
+    public function inner_render()
+    { 
+    ?><div class="span<?php echo $this->get_span_size();?>">
         <div class="thumbnail">
           <a href="<?php echo $this->get_thumb_link();?>">
             <img src="<?php echo $this->get_thumb_src();?>" alt="<?php echo $this->get_thumb_alt();?>">
@@ -21,7 +21,6 @@ class ThumbLinkTitle extends Thumb
             </div>
           </a>
         </div>
-      </div>
-<?php 
+      </div><?php 
     }
 }

@@ -10,7 +10,7 @@ class ThumbTitleDescriptionButton extends Thumb
         return array('thumb_src', 'thumb_alt', 'button_text', 'button_link', 'thumb_title', 'thumb_description');
     }
 
-    public function render()
+    public function inner_render()
     { 
      ?><div class="span<?php echo $this->get_span_size();?>">
         <div class="thumbnail">

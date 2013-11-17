@@ -59,11 +59,11 @@ class Collection
         }
         $widget_class = get_class(current($this->widgets));
         $widget_class::open_row($this);
-        $this->fill_empty_space();
+        $widget_class::fill_empty_space($this);
         foreach ($this->widgets as $widget) {
             $widget->render();
         }
-        $this->fill_empty_space();
+        $widget_class::fill_empty_space($this);
         $widget_class::close_row($this);
         $this->rendered = true;
     }
