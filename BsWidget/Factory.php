@@ -13,10 +13,14 @@ class Factory
 
     static public function factory(array $data, $class=null)
     {
+        $data = self::get_data_with_sanitized_keys($data);
         if (null === $class) {
             $class = self::guess_class($data);
         } else {
-            $class = self::check_provided_data($data, $class);
+            $class = self::sanitize_provided_class($class);
+            if (!$class::is_enough_data_to_construct($data)) {
+                throw new \Exception(self::cannot_construct_error_message($data));
+            }
         }
         return new $class($data);
     }
@@ -41,8 +45,20 @@ class Factory
     }
 
 
+    static public function get_registered_classes()
+    {
+        if (empty(self::$registered_widget_classes)) {
+            throw new \Exception('No classes were registered');
+        }
+        return self::$registered_widget_classes;
+    }
+
     static public function get_registered_classes_needed_keys()
     {
+        if (empty(self::$registered_classes_needed_keys)) {
+            self::get_registered_classes();
+            throw new \Exception('Registered classes don\'t need any key');
+        }
         return self::$registered_classes_needed_keys;
     }
 
@@ -60,15 +76,11 @@ class Factory
         return $widget_class_needed_keys_count;
     }
 
-    static public function check_provided_data(array $data, $class)
+    static public function sanitize_provided_class($class)
     {
         $class = self::namespace_class($class);
         if (!self::is_class_usable($class)) {
             throw new \Exception('The specified class cannot be used as a widget : ' . $class);
-        }
-
-        if (!$class::is_enough_data_to_construct($data)) {
-            throw new \Exception(self::cannot_construct_error_message($data));
         }
         return $class;
     }
@@ -104,10 +116,32 @@ class Factory
                 }
             }
         }
+        throw new \Exception('No class can be constructed from the provided data keys');
     }
 
     static public function namespace_class($class)
     {
         return \Gbili\ClassNameHelper::namespace_class_if_not_already(__NAMESPACE__ . '\\Widget\\', $class);
+    }
+
+    static public function get_not_compliant_data_keys(array $data)
+    {
+        return array_diff(array_keys($data), self::get_registered_classes_needed_keys());
+    }
+
+    static public function get_data_with_sanitized_keys(array $data)
+    {
+        $not_compliant_keys = self::get_not_compliant_data_keys($data);
+        if (empty($not_compliant_keys)) {
+            return $data;
+        }
+        foreach ($not_compliant_keys as $prefixed_key) {
+            $unprefixed_key = substr($prefixed_key, strpos($prefixed_key, '_') + 1);
+            $data_value = $data[$prefixed_key];
+            unset($data[$prefixed_key]);
+            if (!in_array($unprefixed_key, self::get_registered_classes_needed_keys())) continue;
+            $data[$unprefixed_key] = $data_value;
+        }
+        return $data;
     }
 }
